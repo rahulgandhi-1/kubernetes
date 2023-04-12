@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+     name: myngpod1
+spec:
+  replicas: 2
+  selector:
+      matchLabels:
+        app: live
+  template:
+    metadata:
+       labels:
+         app: live
+    spec:
+     containers:
+           - image: nginx
+             name: myngcontainer1
+             ports:
+               - name: http
+                 containerPort: 80
+               - name: https
+                 containerPort: 443
+
+             livenessProbe:
+                   httpGet:
+                     path: /index.html
+                     port: 80
+                   initialDelaySeconds: 10

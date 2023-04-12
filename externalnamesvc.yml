@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: exiternal-service
+spec:
+   type: ExternalName
+   externalName: tujanena.in
+   ports:
+    - port: 80
