@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: emptywalappod
+spec:
+   containers:
+      - image: nginx
+        name: ngcontainer
+        volumeMounts:
+              - name: htmlfolder
+                mountPath: /usr/share/nginx/html
+   volumes:
+    - name: htmlfolder
+      awsElasticBlockStore:
+         volumeID: vol-0ff5028638ef7ea02
+         fsType: ext4
